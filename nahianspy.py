@@ -1,11 +1,13 @@
 import streamlit as st
 import random
 import time
+from streamlit_autorefresh import st_autorefresh  # ✅ enables live updates
 
 # --- Streamlit setup ---
 st.set_page_config(page_title="Spy Game", page_icon="🕵️", layout="centered")
 st.title("🕵️ Spy Game")
 
+# --- Local word list (shorter for clarity, you can paste your full 1000) ---
 # --- Word list (shortened for clarity, use your 1000-word list here) ---
 LOCAL_WORDS = [
     "Beach","Library","Hospital","Museum","Restaurant","Airport","University","Park","Cinema","Stadium",
@@ -74,9 +76,8 @@ LOCAL_WORDS = [
     "Cat","Dog","Horse","Cow","Sheep","Pig","Goat","Chicken","Duck","Rabbit","Tiger","Lion",
     "Elephant","Bear","Deer","Monkey","Fox","Wolf","Snake","Frog","Spider","Bee","Ant","Butterfly"
 ]
-
-# --- Session state setup ---
-for key, default in {
+# --- Initialise session state ---
+defaults = {
     "started": False,
     "word_seen": False,
     "reveal_start": None,
@@ -84,12 +85,12 @@ for key, default in {
     "players": 0,
     "word": "",
     "spies": [],
-    "last_refresh": 0
-}.items():
-    if key not in st.session_state:
-        st.session_state[key] = default
+}
+for k, v in defaults.items():
+    if k not in st.session_state:
+        st.session_state[k] = v
 
-# --- Inputs for new game ---
+# --- Game setup inputs ---
 num_players = st.number_input("Number of players", min_value=3, step=1)
 num_spies = st.number_input("Number of spies", min_value=1, max_value=num_players - 1, step=1)
 
@@ -104,10 +105,9 @@ if st.button("Start Game"):
         st.session_state.started = True
         st.session_state.reveal_start = None
         st.session_state.word_seen = False
-        st.session_state.last_refresh = time.time()
         st.rerun()
 
-# --- Game Logic ---
+# --- Main game logic ---
 if st.session_state.started:
     player = st.session_state.current
     total = st.session_state.players
@@ -116,8 +116,6 @@ if st.session_state.started:
         st.subheader(f"Player {player}")
 
         col1, col2 = st.columns(2)
-
-        # Show word button
         with col1:
             if st.button("Show your word"):
                 st.session_state.word_seen = True
@@ -126,7 +124,6 @@ if st.session_state.started:
                 else:
                     st.success(f"Your word is: **{st.session_state.word}**")
 
-        # Next or Start button
         with col2:
             last_player = (player == total)
             label = "Start Discussion" if last_player else "Next Player"
@@ -136,13 +133,16 @@ if st.session_state.started:
                 st.session_state.word_seen = False
                 st.session_state.current += 1
                 if last_player:
-                    st.session_state.reveal_start = time.time()
+                    st.session_state.reveal_start = time.time()  # start timer
                 st.rerun()
 
     else:
-        # Start countdown if needed
+        # --- Countdown section ---
         if st.session_state.reveal_start is None:
             st.session_state.reveal_start = time.time()
+
+        # ⏱️ Automatically refresh every second
+        st_autorefresh(interval=1000, key="timer_refresh")
 
         elapsed = time.time() - st.session_state.reveal_start
         remaining = max(0, 240 - int(elapsed))  # 4 min
@@ -153,11 +153,9 @@ if st.session_state.started:
         if remaining > 0:
             minutes = remaining // 60
             seconds = remaining % 60
+            progress = (240 - remaining) / 240
+            st.progress(progress)
             st.warning(f"⏱️ Word will be revealed in **{minutes} min {seconds} sec**...")
-            # refresh every second automatically
-            if time.time() - st.session_state.last_refresh > 1:
-                st.session_state.last_refresh = time.time()
-                st.experimental_rerun()
         else:
             st.success(f"⏰ Time’s up! The secret word was: **{st.session_state.word}**")
 
