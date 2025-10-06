@@ -7,7 +7,7 @@ st.set_page_config(page_title="Spy Game", page_icon="🕵️", layout="centered"
 
 st.title("🕵️ Spy Game")
 
-# --- Word list (~1000 basic words) ---
+# --- Local list (~1000 simple words) ---
 LOCAL_WORDS = [
     "Beach","Library","Hospital","Museum","Restaurant","Airport","University","Park","Cinema","Stadium",
     "Zoo","Cafe","Supermarket","Office","Factory","School","Market","Bank","Garden","Bridge","River",
@@ -63,7 +63,7 @@ if "word_seen" not in st.session_state:
 if "reveal_start" not in st.session_state:
     st.session_state.reveal_start = None
 
-# --- Game setup inputs ---
+# --- Game setup ---
 num_players = st.number_input("Number of players", min_value=3, step=1)
 num_spies = st.number_input("Number of spies", min_value=1, max_value=num_players-1, step=1)
 
@@ -80,18 +80,17 @@ if st.button("Start Game"):
         st.session_state.word_seen = False
         st.rerun()
 
-# --- Main Game ---
+# --- MAIN GAME ---
 if st.session_state.started:
     player = st.session_state.current
     total = st.session_state.players
 
-    # PLAYER VIEW LOOP
     if player <= total:
         st.subheader(f"Player {player}")
 
         col1, col2 = st.columns(2)
 
-        # "Show word" button
+        # Show word button
         with col1:
             if st.button("Show your word"):
                 st.session_state.word_seen = True
@@ -100,32 +99,29 @@ if st.session_state.started:
                 else:
                     st.success(f"Your word is: **{st.session_state.word}**")
 
-        # "Next Player" or "Start Discussion"
+        # Next / Start button
         with col2:
             last_player = (player == total)
             label = "Start Discussion" if last_player else "Next Player"
-            st.button(
-                label,
-                disabled=not st.session_state.word_seen,
-                on_click=lambda: (
-                    next_player(last_player)
-                ),
-                key=f"next_{player}"
-            )
+            disabled = not st.session_state.word_seen
 
-    # AFTER ALL PLAYERS FINISH
+            if st.button(label, disabled=disabled):
+                st.session_state.word_seen = False
+                st.session_state.current += 1
+                if last_player:
+                    st.session_state.reveal_start = time.time()  # start countdown
+                st.rerun()
+
     else:
+        # Start countdown if all done
         if st.session_state.reveal_start is None:
             st.session_state.reveal_start = time.time()
 
-        # Live auto-refresh every second
-        st.experimental_rerun = getattr(st, "rerun", None)
-        st_autorefresh = getattr(st, "autorefresh", None)
-        if st_autorefresh:
-            st_autorefresh(interval=1000, key="refresh")
+        # Live countdown refresh
+        st.autorefresh(interval=1000, key="timer_refresh")
 
         elapsed = time.time() - st.session_state.reveal_start
-        remaining = max(0, 240 - int(elapsed))  # 4 min countdown
+        remaining = max(0, 240 - int(elapsed))
 
         starter = random.randint(1, total)
         st.info(f"All players have seen their words! 🎯\n\n**Player {starter}** starts the discussion 🗣️")
@@ -141,14 +137,3 @@ if st.session_state.started:
             for k in list(st.session_state.keys()):
                 del st.session_state[k]
             st.rerun()
-
-# --- Helper Function ---
-def next_player(last_player):
-    """Moves to next player or starts discussion"""
-    st.session_state.word_seen = False
-    if last_player:
-        st.session_state.current += 1
-        st.session_state.reveal_start = time.time()  # start countdown
-    else:
-        st.session_state.current += 1
-    st.rerun()
