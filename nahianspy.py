@@ -1,13 +1,13 @@
 import streamlit as st
 import random
 import time
-from streamlit_autorefresh import st_autorefresh  # ✅ enables live updates
+from streamlit_autorefresh import st_autorefresh  # live countdown
 
 # --- Streamlit setup ---
 st.set_page_config(page_title="Spy Game", page_icon="🕵️", layout="centered")
 st.title("🕵️ Spy Game")
 
-# --- Local word list (shorter for clarity, you can paste your full 1000) ---
+# --- Local word list (short version for clarity) ---
 # --- Word list (shortened for clarity, use your 1000-word list here) ---
 LOCAL_WORDS = [
     "Beach","Library","Hospital","Museum","Restaurant","Airport","University","Park","Cinema","Stadium",
@@ -85,6 +85,7 @@ defaults = {
     "players": 0,
     "word": "",
     "spies": [],
+    "starter": None,  # ✅ to store who starts
 }
 for k, v in defaults.items():
     if k not in st.session_state:
@@ -105,9 +106,10 @@ if st.button("Start Game"):
         st.session_state.started = True
         st.session_state.reveal_start = None
         st.session_state.word_seen = False
+        st.session_state.starter = None  # reset starter
         st.rerun()
 
-# --- Main game logic ---
+# --- Main Game ---
 if st.session_state.started:
     player = st.session_state.current
     total = st.session_state.players
@@ -133,21 +135,23 @@ if st.session_state.started:
                 st.session_state.word_seen = False
                 st.session_state.current += 1
                 if last_player:
-                    st.session_state.reveal_start = time.time()  # start timer
+                    st.session_state.reveal_start = time.time()
+                    st.session_state.starter = random.randint(1, total)  # ✅ pick once
                 st.rerun()
 
     else:
-        # --- Countdown section ---
+        # Countdown only after last player
         if st.session_state.reveal_start is None:
             st.session_state.reveal_start = time.time()
 
-        # ⏱️ Automatically refresh every second
+        # auto-refresh every second
         st_autorefresh(interval=1000, key="timer_refresh")
 
         elapsed = time.time() - st.session_state.reveal_start
-        remaining = max(0, 240 - int(elapsed))  # 4 min
+        remaining = max(0, 240 - int(elapsed))  # 4 minutes
 
-        starter = random.randint(1, total)
+        # ✅ Use stored starter instead of random every rerun
+        starter = st.session_state.starter or 1
         st.info(f"All players have seen their words! 🎯\n\n**Player {starter}** starts the discussion 🗣️")
 
         if remaining > 0:
