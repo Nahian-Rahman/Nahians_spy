@@ -10,6 +10,102 @@ st.title("🕵️ Spy Game")
 # --- Local word list (short version for clarity) ---
 # --- Word list (shortened for clarity, use your 1000-word list here) ---
 LOCAL_WORDS = [
+    # --- Places ---
+"Airport","Bakery","Bank","Bar","Beach","Bridge","Bus Station","Cafe","Castle","Church",
+"Cinema","Classroom","Cliff","Concert Hall","Courtroom","Desert","Farm","Fire Station","Forest","Garage",
+"Garden","Harbour","Hospital","Hotel","Island","Jungle","Laboratory","Library","Lighthouse","Market",
+"Museum","Office","Palace","Park","Petrol Station","Pharmacy","Playground","Police Station","Port","Post Office",
+"Prison","Restaurant","School","Shopping Mall","Space Station","Sports Centre","Stadium","Subway","Supermarket","Swimming Pool",
+"Temple","Theatre","Town Hall","Train Station","University","Zoo",
+
+# --- Occupations ---
+"Actor","Architect","Artist","Athlete","Baker","Banker","Barber","Bartender","Builder","Bus Driver",
+"Butcher","Carpenter","Chef","Cleaner","Clerk","Coach","Dentist","Designer","Doctor","Driver",
+"Electrician","Engineer","Farmer","Firefighter","Fisherman","Gardener","Hairdresser","Judge","Lawyer","Librarian",
+"Mechanic","Miner","Musician","Nurse","Painter","Photographer","Pilot","Plumber","Police Officer","Politician",
+"Postman","Professor","Receptionist","Scientist","Secretary","Shopkeeper","Singer","Soldier","Teacher","Waiter",
+"Waitress","Writer",
+
+# --- Food & Drink ---
+"Apple","Avocado","Bacon","Bagel","Banana","Barbecue","Beans","Beef","Beer","Biscuit",
+"Bread","Burger","Butter","Cake","Candy","Carrot","Cereal","Cheese","Chicken","Chips",
+"Chocolate","Coffee","Cookie","Corn","Croissant","Cucumber","Curry","Donut","Egg","Fish",
+"Fries","Fruit","Garlic","Grapes","Hotdog","Ice Cream","Juice","Lemon","Lettuce","Meat",
+"Milk","Noodles","Onion","Orange","Pancake","Pasta","Peach","Pear","Pizza","Popcorn",
+"Potato","Rice","Salad","Salt","Sandwich","Soup","Steak","Strawberry","Sushi","Tea",
+"Tomato","Water","Wine","Yoghurt",
+
+# --- Sports & Games ---
+"Archery","Badminton","Baseball","Basketball","Bowling","Boxing","Chess","Cricket","Cycling","Darts",
+"Fencing","Fishing","Football","Golf","Gymnastics","Hiking","Hockey","Judo","Karate","Running",
+"Rugby","Sailing","Shooting","Skateboarding","Skiing","Snowboarding","Surfing","Swimming","Table Tennis","Tennis",
+"Volleyball","Weightlifting","Wrestling",
+
+# --- Objects & Items ---
+"Alarm Clock","Anchor","Backpack","Ball","Balloon","Battery","Bed","Bell","Binoculars","Blanket",
+"Book","Bottle","Broom","Brush","Bucket","Camera","Candle","Car","Chair","Clock",
+"Computer","Cup","Desk","Door","Drum","Envelope","Fan","Flag","Fork","Glasses",
+"Hammer","Helmet","Key","Knife","Lamp","Laptop","Map","Mirror","Mug","Notebook",
+"Oven","Paintbrush","Pen","Pencil","Phone","Picture","Pillow","Plate","Radio","Razor",
+"Remote","Rope","Ruler","Scissors","Shoe","Spade","Spoon","Suitcase","Table","Television",
+"Toothbrush","Torch","Towel","Umbrella","Wallet","Watch","Window",
+
+# --- Animals ---
+"Ant","Bat","Bear","Bee","Bird","Butterfly","Camel","Cat","Cheetah","Chicken",
+"Cow","Crab","Crocodile","Deer","Dog","Dolphin","Donkey","Duck","Eagle","Elephant",
+"Fish","Flamingo","Frog","Fox","Giraffe","Goat","Goose","Hamster","Hedgehog","Horse",
+"Kangaroo","Koala","Lion","Lizard","Monkey","Mouse","Octopus","Owl","Panda","Parrot",
+"Penguin","Pig","Rabbit","Rat","Seal","Shark","Sheep","Snake","Spider","Squirrel",
+"Tiger","Turtle","Whale","Wolf","Zebra",
+
+# --- Transport ---
+"Airplane","Ambulance","Bicycle","Boat","Bus","Cable Car","Car","Caravan","Ferry","Helicopter",
+"Jet","Lorry","Metro","Minibus","Motorbike","Plane","Sailboat","Scooter","Ship","Submarine",
+"Taxi","Train","Tram","Truck","Van",
+
+# --- Nature ---
+"Beach","Cave","Cliff","Cloud","Desert","Field","Flower","Forest","Grass","Hill",
+"Island","Lake","Leaf","Lightning","Mountain","Ocean","Rain","Rainbow","River","Rock",
+"Sand","Sea","Sky","Snow","Soil","Star","Storm","Sun","Tree","Valley",
+"Volcano","Waterfall","Wind",
+
+# --- Fantasy / Fun ---
+"Alien","Angel","Castle","Cave","Crown","Dragon","Fairy","Ghost","Giant","Knight",
+"Mermaid","Monster","Pirate","Prince","Princess","Robot","Superhero","Treasure","Vampire","Wizard",
+
+# --- Everyday Actions / Verbs ---
+"Run","Walk","Jump","Eat","Drink","Sleep","Read","Write","Sing","Dance",
+"Cook","Play","Drive","Swim","Climb","Watch","Talk","Draw","Clean","Work",
+"Study","Teach","Build","Fly","Catch","Throw","Laugh","Cry","Think","Smile",
+
+# --- Technology & Modern Life ---
+"App","Battery","Bluetooth","Calculator","Camera","Charger","Computer","Drone","Email","Headphones",
+"Internet","Keyboard","Laptop","Microphone","Monitor","Mouse","Phone","Printer","Robot","Screen",
+"Smartwatch","Speaker","Tablet","Television","USB","Website","WiFi",
+
+# --- Household ---
+"Bed","Chair","Table","Sofa","Lamp","Cupboard","Curtain","Mirror","Carpet","Fridge",
+"Oven","Microwave","Sink","Toaster","Washing Machine","Dishwasher","Shower","Bathtub","Towel","Toothbrush",
+
+# --- Countries & Cities ---
+"Bangladesh","India","Pakistan","Nepal","China","Japan","South Korea","Singapore","Malaysia","Thailand",
+"France","Germany","Italy","Spain","Portugal","Switzerland","England","Scotland","Ireland","Wales",
+"USA","Canada","Mexico","Brazil","Argentina","Egypt","Kenya","Nigeria","South Africa","Australia",
+"New Zealand","Iceland","Norway","Sweden","Denmark","Netherlands","Belgium","Greece","Turkey","Saudi Arabia",
+"Qatar","UAE","Iran","Iraq","Israel","Jordan","Lebanon","Syria","Afghanistan","Sri Lanka",
+"Dhaka","London","Paris","Rome","Madrid","Lisbon","Berlin","Tokyo","Seoul","Singapore","Sydney","New York","Dubai",
+
+# --- Movies / Entertainment ---
+"Avengers","Batman","Superman","Spider-Man","Iron Man","Hulk","Captain America","Doctor Strange","Thor","Black Panther",
+"Harry Potter","Hogwarts","Star Wars","Darth Vader","Luke Skywalker","Yoda","Lightsaber","Jedi","Sith","Death Star",
+"Jurassic Park","Dinosaur","Titanic","Avatar","Matrix","Neo","Morpheus","Trinity","Inception","Joker",
+
+# --- Random & Fun ---
+"Coffee Shop","Elevator","Beach Ball","Board Game","Laptop","Magic Trick","Haunted House","Time Machine",
+"Amusement Park","Camping","Cooking Class","Treasure Map","Space Rocket","Hot Air Balloon","Detective","Spy","Secret Mission",
+"Lost Island","Underwater City","Hidden Cave","Deserted Village","Ancient Temple","Golden Crown","Mystery Box","Secret Code",
+"Birthday Party","Concert","Festival","Carnival","Picnic","Rainy Day","Sunny Afternoon","Midnight Train","Ocean Cruise","Winter Cabin",
+
     "Beach","Library","Hospital","Museum","Restaurant","Airport","University","Park","Cinema","Stadium",
     "Zoo","Cafe","Supermarket","Office","Factory","School","Market","Bank","Garden","Bridge","River",
     "Forest","Hotel","Temple","Mountain","Valley","Desert","Village","Town","City","Farm","Field",
