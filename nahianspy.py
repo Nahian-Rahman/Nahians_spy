@@ -10,6 +10,30 @@ st.title("🕵️ Spy Game")
 # --- Local word list (short version for clarity) ---
 # --- Word list (shortened for clarity, use your 1000-word list here) ---
 LOCAL_WORDS = [
+ "Albert Einstein", "Isaac Newton", "Marie Curie", "Charles Darwin", "Nikola Tesla",
+        "Galileo Galilei", "Stephen Hawking", "Niels Bohr", "Rosalind Franklin", "Ada Lovelace",
+        "Dmitri Mendeleev", "Richard Feynman", "James Clerk Maxwell", "Michael Faraday",
+        "Gregor Mendel", "Alan Turing", "Louis Pasteur", "Enrico Fermi", "Carl Sagan",
+        "Erwin Schrödinger", "Max Planck", "Johannes Kepler", "Jane Goodall", "Neil deGrasse Tyson",
+"Physics", "Chemistry", "Biology", "Astronomy", "Geology", "Mathematics", "Ecology",
+        "Genetics", "Thermodynamics", "Quantum Mechanics", "Electromagnetism", "Relativity",
+        "Evolution", "Botany", "Zoology", "Anatomy", "Neuroscience", "Meteorology",
+        "Oceanography", "Paleontology", "Biochemistry", "Microbiology", "Astrophysics",
+ "Artificial Intelligence", "Machine Learning", "3D Printing", "Robotics", "Drones",
+        "Smartphones", "Virtual Reality", "Augmented Reality", "Quantum Computing",
+        "Blockchain", "5G Network", "Internet of Things", "Autonomous Vehicles",
+        "Wearable Devices", "Cloud Computing", "Cybersecurity", "Social Media", "Biotechnology",
+        "Nanotechnology", "SpaceX Rockets", "Electric Cars", "ChatGPT", "Facial Recognition",
+"Steam Engine", "Printing Press", "Telegraph", "Typewriter", "Rotary Phone",
+        "Phonograph", "Radio", "Television", "VHS", "Cassette Tape", "Slide Projector",
+        "Film Camera", "Gramophone", "Pocket Watch", "Abacus", "Mechanical Clock",
+        "Horse Carriage", "Sewing Machine", "Record Player", "Analog Computer",
+ 
+  
+   
+    
+    
+    
     # --- Places ---
 "Airport","Bakery","Bank","Bar","Beach","Bridge","Bus Station","Cafe","Castle","Church",
 "Cinema","Classroom","Cliff","Concert Hall","Courtroom","Desert","Farm","Fire Station","Forest","Garage",
