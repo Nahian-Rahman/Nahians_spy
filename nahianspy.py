@@ -28,8 +28,26 @@ LOCAL_WORDS = [
         "Phonograph", "Radio", "Television", "VHS", "Cassette Tape", "Slide Projector",
         "Film Camera", "Gramophone", "Pocket Watch", "Abacus", "Mechanical Clock",
         "Horse Carriage", "Sewing Machine", "Record Player", "Analog Computer",
+
+# double meaning
  
-  
+    "Bat", "Bank", "Bark", "Book", "Bow", "Box", "Can", "Cell", "Change", "Charge",
+    "Check", "Coach", "Cold", "Current", "Date", "Deck", "Drill", "Duck", "Fair", "Fall",
+    "File", "Fly", "Found", "Glass", "Jam", "Kind", "Left", "Letter", "Light", "Match",
+    "Mine", "Nail", "Note", "Orange", "Park", "Pen", "Pitch", "Plane", "Point", "Post",
+    "Ring", "Rock", "Roll", "Seal", "Slip", "Spring", "Square", "Star", "Stick", "Suit",
+    "Tear", "Tie", "Train", "Watch", "Well", "Wave", "Right", "Sink", "Duck", "Bear",
+    "Yard", "Fair", "Fly", "Palm", "File", "Bowl", "Sink", "Trip", "Toast", "Break",
+    "Match", "Wave", "Light", "Can", "Seal", "Iron", "Ball", "Book", "Ring", "Suit",
+    "Scale", "Club", "Drill", "Letter", "Spring", "Nail", "Coach", "Fan", "Race", "Pitch",
+    "Crane", "Chest", "Jam", "Trip", "Duck", "Bat", "Page", "Ship", "Stage", "Play",
+    "Charge", "Store", "Well", "Roll", "Saw", "Clip", "Net", "Pen", "Bill", "Plane",
+    "Park", "Rock", "Date", "Line", "Tap", "Watch", "Note", "Ball", "Seal", "Light",
+    "Tie", "Ring", "Fair", "Fly", "Mine", "Match", "Bark", "Kind", "Bank", "Spring",
+    "File", "Coach", "Post", "Suit", "Wave", "Crane", "Race", "Bat", "Stage", "Trip",
+    "Toast", "Pitch", "Duck", "Palm", "Bear", "Can", "Well", "Book", "Right", "Chest",
+    "Play", "Drill", "Bill", "Point", "Glass", "Slip", "Jam", "Letter", "Star", "Roll",
+    "Trip", "Light", "Ring", "Page", "Seal", "Plane", "Note", "Tie", "Wave", "Mine",
    
     
     
